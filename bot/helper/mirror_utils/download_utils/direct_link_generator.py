@@ -635,5 +635,9 @@ def sharer_pw(url, forced_login=False):
         # retry download via login
         return sharer_pw(url, forced_login=True)
     
-    flink = info_parsed['gdrive_link']
-    return flink
+    try:
+        flink = info_parsed['gdrive_link']
+        return flink
+    except:
+        raise DirectDownloadLinkException("ERROR! File Not Found or User rate exceeded !!")
+    
